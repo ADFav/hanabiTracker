@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div ng-app="HT">
-		  <div class="container" ng-controller="hanabiTracker">
+		  <div class="container-fluid" ng-controller="hanabiTracker">
 			<div class="row" ng-repeat="color in colors">
 			  <div class="col-xs-1"></div>
 			  <div ng-repeat="card in cards">
@@ -77,5 +77,8 @@
 ]);
 
 	  </script>
+		<style>
+			*{font-size:36pt;}
+		</style>
 	</body>
 </html>
