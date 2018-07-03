@@ -9,6 +9,9 @@ body{
 	column-gap: 10px;
 	-webkit-column-gap: 10px;
 	-moz-column-gap: 10px;
+	row-gap: 0px;
+	-webkit-row-gap: 0px;
+	-moz-row-gap: 0px;
 	margin: 0px;
 	padding: 10px;
 	height: 100vh;
@@ -19,6 +22,12 @@ body{
 	display: grid;
 	grid-template-columns: repeat(2,1fr);
 	grid-template-rows: repeat(5, 2fr) 1fr;
+	column-gap : 0px;
+	-webkit-column-gap: 0px;
+	-moz-column-gap: 0px;
+	row-gap: 0px;
+	-webkit-row-gap: 0px;
+	-moz-row-gap: 0px;
 }
 
 button.clearButton{
