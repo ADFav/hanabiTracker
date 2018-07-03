@@ -7,6 +7,8 @@ body{
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: 1fr;
 	column-gap: 10px;
+	-webkit-column-gap: 10px;
+	-moz-column-gap: 10px;
 	margin: 0px;
 	padding: 10px;
 	height: 100vh;
@@ -21,4 +23,8 @@ body{
 
 button.clearButton{
 	grid-area: 6 / 1 / span 1 / span 2;
+}
+
+button{
+	background-color: silver;
 }
