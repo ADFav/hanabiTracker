@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="manifest" href="/manifest.json">
+		<link rel="stylesheet" href="hanabiTracker.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+	</head>
+	<body ng-app="HT">
+		<div ng-controller="hanabiTracker" class ="gridContainer">
+			<div ng-repeat="card in cards">
+				<button ng-repeat="color in colors"   ng-style="card.style(color)"  ng-click="card.pushButton(color)"> {{color}}</button>
+				<button ng-repeat="number in numbers" ng-style="card.style(number)" ng-click="card.pushButton(number)">{{number}}</button>
+				<button class = "clearButton" ng-click = "card.clear()">Play</button>
+			</div>
+		</div>
+		
+	<script src="script.js"></script>
+	</body>
+</html>
