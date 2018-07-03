@@ -1,13 +1,22 @@
+html, body{
+	background-color: #073763;
+	height: 100vh;
+	margin: 0px;
+	padding: 0px;
+}
 .gridContainer{
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: 1fr;
 	column-gap: 10px;
+	height: 100%;
+	margin: 10px;
 }
 
 .gridContainer div{
 	display: grid;
 	grid-template-columns: repeat(2,1fr);
-	grid-template-rows: repeat(6, 1fr);
+	grid-template-rows: repeat(5, 2fr) 1fr;
 }
 
 button.clearButton{
