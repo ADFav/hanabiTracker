@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="HT">
 	<head>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
 		<link rel="manifest" href="manifest.json">
 		<link rel="stylesheet" href="hanabiTracker.css" />
 		<link rel="icon" sizes="192x192" href="HanabiTracker_192.png">
@@ -12,14 +12,12 @@
 		<link rel="apple-touch-icon" sizes="192x192" href="HanabiTracker_192.png">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
 	</head>
-	<body ng-app="HT">
-		<div ng-controller="hanabiTracker" class ="gridContainer">
-			<div ng-repeat="card in cards">
-				<button ng-repeat="color in colors"   ng-style="card.style(color)"  ng-click="card.pushButton(color)"> {{color}}</button>
-				<button ng-repeat="number in numbers" ng-style="card.style(number)" ng-click="card.pushButton(number)">{{number}}</button>
-				<button class = "clearButton" ng-click = "card.clear()">Play</button>
-			</div>
+	<body ng-controller="hanabiTracker" class ="gridContainer">
+		<div ng-repeat="card in cards" class = "card">
+			<button ng-repeat="color in colors"   ng-style="card.style(color)"  ng-click="card.pushButton(color)"> {{color}}</button>
+			<button ng-repeat="number in numbers" ng-style="card.style(number)" ng-click="card.pushButton(number)">{{number}}</button>
+			<button class = "clearButton" ng-click = "card.clear()">Play</button>
 		</div>
-	<script src="script.js"></script>
+		<script src="script.js"></script>
 	</body>
 </html>
