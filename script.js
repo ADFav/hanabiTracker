@@ -1,14 +1,26 @@
 var HT = angular.module("HT",[]);
-var styleTest;
 
 HT.controller("hanabiTracker",["$scope",function($scope){
 	$scope.colors = "RGWBY".split("");
 	$scope.numbers = "12345".split("");
 	
+
+	$scope.states = [];
+
 	function gridPostion(row,column){
 		return {"grid-row":String(row) + " / span 1","grid-column":String(column) + " / span 1"};
 	}
 	
+	// function State (){
+	// 	this.writeState(card){
+	// 		return Object.keys(card.state).forEach( key => result[key] = card[key]);
+	// 	}
+
+	// 	this.printState(card){
+
+	// 	}
+	// };
+
 	function Card (){
 		this.state = {};
 		
@@ -59,13 +71,8 @@ HT.controller("hanabiTracker",["$scope",function($scope){
 		
 	};
 	
-	$scope.cards = [0,1,2,3,4].map( () => new Card());
-	styleTest = function(){
-		console.log($scope.cards);
-		console.log($scope.cards[0].style("R"));
-		$scope.cards[0].pushButton("R");
-		console.log($scope.cards[0].style("R"));
-	};
+	$scope.cards = [0,1,2,3].map( () => new Card());
+	
 }]);
 
 
