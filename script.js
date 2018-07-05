@@ -71,7 +71,7 @@ HT.controller("hanabiTracker",["$scope",function($scope){
 		
 	};
 	
-	$scope.cards = [0,1,2,3].map( () => new Card());
+	$scope.cards = [0,1,2,3,4].map( () => new Card() );
 	
 }]);
 
