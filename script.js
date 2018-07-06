@@ -1,6 +1,6 @@
-var HT = angular.module("HT", []);
+var HT = angular.module("HT", ["ngCookies"]);
 
-HT.controller("hanabiTracker", ["$scope", function ($scope) {
+HT.controller("hanabiTracker", ["$scope", "$cookies", function ($scope, $cookies) {
 	const noInfo = 0, selected = 1, unselected = 2;
 	$scope.colors = "RGWBY".split("");
 	$scope.numbers = "12345".split("");
@@ -19,7 +19,7 @@ HT.controller("hanabiTracker", ["$scope", function ($scope) {
 
 	class StateChange {
 		constructor(card, property, previousValue, nextValue) {
-			this.card = card.index;
+			this.card = card;
 			this.property = property;
 			this.previousValue = previousValue;
 			this.nextValue = nextValue;
@@ -48,7 +48,7 @@ HT.controller("hanabiTracker", ["$scope", function ($scope) {
 	class State {
 		constructor(card) {
 			applyToAllProperties(property => this[property] = noInfo);
-			this.card = card;
+			this.card = card.index;
 		}
 		setStateValue(property, newValue) {
 			const oldValue = this[property];
@@ -62,8 +62,16 @@ HT.controller("hanabiTracker", ["$scope", function ($scope) {
 
 	class Card {
 		constructor(index) {
-			this.state = new State(this);
 			this.index = index;
+			console.log($cookies.get("HT-card-"+this.index));
+			this.state = new State(this);
+			if($cookies.get("HT-card-"+this.index)){
+				const savedState = JSON.parse($cookies.get("HT-card-"+this.index));
+				for(let property in savedState){
+					this.state.setStateValue(property, savedState[property]);
+				}
+			}
+			console.log(this.state);
 		}
 		clear() {
 			if (states[stateIndex] && this.index == states[stateIndex].cardPressed && "clear" == states[stateIndex].buttonPressed) {
@@ -76,6 +84,7 @@ HT.controller("hanabiTracker", ["$scope", function ($scope) {
 					states.splice(0, stateIndex, stateChanges);
 				}
 			}
+			$scope.cards.forEach( card => $cookies.putObject("HT-card-"+card.index,card.state));
 		}; //card.clear
 		setProperty(property, value, stateChanges) {
 			if (this.state[property] != value) {
@@ -99,6 +108,7 @@ HT.controller("hanabiTracker", ["$scope", function ($scope) {
 					states.splice(0, stateIndex, stateChanges);
 				}
 			}
+			$scope.cards.forEach( card => $cookies.putObject("HT-card-"+card.index,card.state));
 		}; //card.pushButton
 
 		style(property) {
